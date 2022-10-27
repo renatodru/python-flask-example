@@ -1,11 +1,18 @@
 from flask import Flask
+import os
 
 app = Flask(__name__)
 
+porta = os.environ.get("APP_PORT")
+print(porta)
+
 @app.route("/")
 def hello_world():
-    return "ola mundo"
+    return "Renato Regis"
 
+@app.route("/health")
+def health():
+    return """<h1>Working!!!</h1>\n<h2>Renato Regis</h2>"""
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000, debug=True)
+    app.run(host="0.0.0.0", port=porta, debug=True)

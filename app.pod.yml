@@ -6,17 +6,19 @@ spec:
   containers:
   - name: my-app
     image: localhost:32000/app-flask:latest
+
     livenessProbe:
       httpGet:
-        path: /
+        path: /health
         port: 3000
       initialDelaySeconds: 10
       timeoutSeconds: 2
       periodSeconds: 5
       failureThreshold: 1
+
     readinessProbe:
       httpGet:
-        path: /
+        path: /health
         port: 3000
       initialDelaySeconds: 2
       periodSeconds: 5

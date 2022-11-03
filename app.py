@@ -4,7 +4,8 @@ import os
 app = Flask(__name__)
 
 porta = os.environ.get("APP_PORT")
-print(porta)
+
+cont = 0 
 
 @app.route("/")
 def hello_world():
@@ -14,5 +15,12 @@ def hello_world():
 def health():
     return """<h1>Working!!!</h1>\n<h2>Renato Regis</h2>"""
 
-if __name__ == "__main__":
+@app.route("/counter")
+def counter():
+    global cont
+    cont += 1
+    return str(cont)
+
+
+if __name__ == "__main__": 
     app.run(host="0.0.0.0", port=porta, debug=True)

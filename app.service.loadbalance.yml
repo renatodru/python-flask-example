@@ -1,0 +1,15 @@
+#visao geral do yml do service kubernets
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-service #nome arbitrario
+spec:
+  type: LoadBalancer
+  selector: #seleciona o pod, vai redirecionar para todos os que tem o mesmo nome
+    app: my-app
+  
+  ports:
+  - name: "http"
+    port: 80
+    targetPort: 3000
+    

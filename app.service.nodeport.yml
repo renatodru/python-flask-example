@@ -1,0 +1,15 @@
+#visao geral do yml do service kubernets
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-port-service #nome arbitrario
+spec:
+  type: NodePort
+  selector: #seleciona o pod, vai redirecionar para todos os que tem o mesmo nome
+    app: my-app
+    version: 1.0.0
+  
+  ports:
+  - port: 80
+    targetPort: 3000
+    nodePort: 31000 #porta que vai ser exposta para fora do cluster a partir da 31000

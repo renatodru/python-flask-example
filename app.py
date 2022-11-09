@@ -21,6 +21,10 @@ def counter():
     cont += 1
     return str(cont)
 
+#app-flask:2.0.0
+@app.route("/version")
+def counter_route():
+    return '2.0.0'
 
 if __name__ == "__main__": 
     app.run(host="0.0.0.0", port=porta, debug=True)
